@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.LinkedList;
 
 public class ListMaker {
@@ -25,9 +22,8 @@ public class ListMaker {
     public void readFile()
     {
         try {
-            ClassLoader classLoader = getClass().getClassLoader();
-            FileReader fileReader = new FileReader(classLoader.getResource("german.dic").getFile());
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            InputStream in = getClass().getResourceAsStream("german.dic");
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
 
             while ((line = bufferedReader.readLine()) !=  null)
             {
