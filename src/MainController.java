@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class MainController {
 
@@ -27,31 +26,9 @@ public class MainController {
 
     public void createListValidWords()
     {
-        ListMaker listMaker = new ListMaker(mainModel.getInputWord().length());
+        ListMaker listMaker = new ListMaker(mainModel.getInputWord().length(), mainModel.getCountCharsInput());
         mainModel.setValidWords(listMaker.makeList());
-        mainModel.setCandidates(mainModel.getValidWords().size());
-    }
-
-    public void tryWords()
-    {
-        for(int x = 0; x < mainModel.getValidWords().size(); x++)
-        {
-
-            mainModel.setCountCharsActualWord(countChars(mainModel.getValidWords().get(x)));
-
-            if(!Arrays.equals(mainModel.getCountCharsInput(), mainModel.getCountCharsActualWord()))
-            {
-                mainModel.addWordInvalid(mainModel.getValidWords().get(x));
-            }
-        }
-    }
-
-    public void removeInvalidWords()
-    {
-        for (int i = 0; i < mainModel.getInvalidWords().size(); i++)
-        {
-            mainModel.removeValidWord(mainModel.getInvalidWords().get(i));
-        }
+        mainModel.setCandidates(listMaker.getCandidates());
     }
 
     public void printValidWords()

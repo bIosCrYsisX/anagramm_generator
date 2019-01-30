@@ -9,8 +9,6 @@ public class Main {
         MainController mainController = new MainController();
         mainController.getWord();
         mainController.createListValidWords();
-        mainController.tryWords();
-        mainController.removeInvalidWords();
         mainController.printValidWords();
 
         start();
